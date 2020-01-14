@@ -5,10 +5,10 @@
 
 class APIAdapter
   BASE_URL = "https://the-one-api.herokuapp.com/v1"
-  
+
 
   def self.get_movie_series()
-    response = RestClient.get("#{BASE_URL}/movie", {"Authorization": "Bearer #{API_KEY}"})
+    response = RestClient.get("#{BASE_URL}/movie", {"Authorization": "Bearer #{ENV['LOTR_API_KEY']}"})
     response_hash = JSON.parse(response.body)
 
     response_hash["docs"].each do |k, v|
